@@ -1,6 +1,6 @@
 package org.example.pharmacy_web.controller.dto;
 // DTO class for Drug entity
-public class DrugDto {
+public class DrugResponseDto {
 
     private Long id;
     private String name;
@@ -11,7 +11,7 @@ public class DrugDto {
     private String form;
     private String manufacturer;
 
-    public DrugDto(Long id, String name, double price, int availableUnits, String code, String dose, String form, String manufacturer) {
+    public DrugResponseDto(Long id, String name, double price, int availableUnits, String code, String dose, String form, String manufacturer) {
         this.id = id;
         this.name = name;
         this.price = price;

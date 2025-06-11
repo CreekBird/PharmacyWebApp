@@ -3,7 +3,7 @@ package org.example.pharmacy_web.controller.dto;
 import jakarta.validation.constraints.Size;
 
 
-public class CreateDrugDto {
+public class CreateDrugRequestDto {
     private Long id;
 
     private String code;

@@ -1,4 +1,4 @@
-package org.example.pharmacy_web.infrastructure.repo;
+package org.example.pharmacy_web.infrastructure.repository;
 
 import org.example.pharmacy_web.infrastructure.entity.Drug;
 import org.springframework.data.jpa.repository.JpaRepository;

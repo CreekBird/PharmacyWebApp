@@ -1,5 +1,5 @@
 package org.example.pharmacy_web.controller;
-import org.example.pharmacy_web.controller.dto.DrugDto;
+import org.example.pharmacy_web.controller.dto.DrugResponseDto;
 import org.example.pharmacy_web.infrastructure.entity.Drug;
 import org.example.pharmacy_web.service.DrugService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +25,12 @@ public class DrugController {
     }
 
     @GetMapping("/{id}")
-    public DrugDto getOne(@PathVariable Long id) {
+    public DrugResponseDto getOne(@PathVariable Long id) {
         Drug drug = drugService.getOne(id);
-        return new DrugDto(drug.getId(), drug.getName(), drug.getPrice(), drug.getAvailableUnits(), drug.getCode(), drug.getDose(), drug.getForm(), drug.getManufacturer());
+        return new DrugResponseDto(drug.getId(), drug.getName(), drug.getPrice(), drug.getAvailableUnits(), drug.getCode(), drug.getDose(), drug.getForm(), drug.getManufacturer());
     }
     @PostMapping
-    public DrugDto create(@Validated @RequestBody Drug drug) {
+    public DrugResponseDto create(@Validated @RequestBody Drug drug) {
         var drugs = new Drug();
         drugs.setCode(drug.getCode());
         drugs.setName(drug.getName());

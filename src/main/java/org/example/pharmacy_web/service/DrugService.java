@@ -1,9 +1,9 @@
 package org.example.pharmacy_web.service;
 
 
-import org.example.pharmacy_web.controller.dto.DrugDto;
+import org.example.pharmacy_web.controller.dto.DrugResponseDto;
 import org.example.pharmacy_web.infrastructure.entity.Drug;
-import org.example.pharmacy_web.infrastructure.repo.DrugRepository;
+import org.example.pharmacy_web.infrastructure.repository.DrugRepository;
 import org.example.pharmacy_web.service.model.DrugModel;
 import org.example.pharmacy_web.service.value.Price;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class DrugService {
     public Drug getOne(Long id) {
         return drugRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Drug not found"));
     }
-    public DrugDto create(Drug drug){
+    public DrugResponseDto create(Drug drug){
         var price = Price.create((drug.getPrice()));
         var drugModel = new DrugModel(
                 drug.getId(),
@@ -40,7 +40,7 @@ public class DrugService {
         drugs.setPrice(drugModel.getPrice().getValue());
 
         var savedDrug = drugRepository.save(drugs);
-        return new DrugDto(
+        return new DrugResponseDto(
                 savedDrug.getId(),
                 savedDrug.getName(),
                 savedDrug.getPrice(),
