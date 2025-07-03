@@ -1,5 +1,9 @@
 package org.example.pharmacy_web.controller.dto;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 public class LoginRequestDto {
 
     private String username;
@@ -20,5 +24,6 @@ public class LoginRequestDto {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
 

@@ -38,4 +38,3 @@ public class UserService {
         return new UserResponseDto(user.getId(), user.getUsername());
     }
 }
-
