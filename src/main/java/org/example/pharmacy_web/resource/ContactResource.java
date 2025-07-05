@@ -44,7 +44,11 @@ public class ContactResource {
     public ResponseEntity<String> uploadPhoto(@RequestParam("id") String id, @RequestParam("file") MultipartFile file) {
         return ResponseEntity.ok().body(contactService.uploadPhoto(id, file));
     }
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteContact(@PathVariable String id) {
+        contactService.deleteContact(id);
+        return ResponseEntity.noContent().build();
+    }
 
 
     @GetMapping(path = "/image/{filename}", produces = { IMAGE_PNG_VALUE, IMAGE_JPEG_VALUE })

@@ -1,5 +1,6 @@
 package org.example.pharmacy_web.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.example.pharmacy_web.domain.Contact;
 import org.example.pharmacy_web.repo.ContactRepo;
 import jakarta.servlet.Servlet;
@@ -31,6 +32,12 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 public class ContactService {
     private final ContactRepo contactRepo;
 
+    public void deleteContact(String id) {
+        Contact contact = contactRepo.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Contact not found with id: " + id));
+        contactRepo.delete(contact);
+    }
+
     public Page<Contact> getAllContacts(int page, int size) {
         return contactRepo.findAll(PageRequest.of(page, size, Sort.by("name")));
     }
@@ -43,9 +50,7 @@ public class ContactService {
         return contactRepo.save(contact);
     }
 
-    public void deleteContact(Contact contact) {
-        // Assignment
-    }
+    
 
     public String uploadPhoto(String id, MultipartFile file) {
         log.info("Saving picture for user ID: {}", id);

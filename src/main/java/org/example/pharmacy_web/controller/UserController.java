@@ -5,6 +5,7 @@ import org.example.pharmacy_web.controller.dto.CreateUserResponseDto;
 import org.example.pharmacy_web.controller.dto.UserResponseDto;
 import org.example.pharmacy_web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,6 +29,11 @@ public class UserController {
     @PostMapping
     public CreateUserResponseDto createUser(@RequestBody CreateUserRequestDto user) {
         return userService.createUser(user);
+    }
+    @PostMapping("/register")
+    public ResponseEntity<CreateUserResponseDto> registerUser(@RequestBody CreateUserRequestDto request) {
+        var response = userService.createUser(request);
+        return ResponseEntity.ok(response);
     }
 }
 

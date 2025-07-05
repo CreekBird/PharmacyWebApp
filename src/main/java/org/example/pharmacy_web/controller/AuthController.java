@@ -19,14 +19,16 @@ public class AuthController {
         this.authService = authService;
     }
 
+    @CrossOrigin
     @PostMapping("/login")
-    @PreAuthorize("permitAll()")
+    //@PreAuthorize("permitAll()")
     public LoginResponseDto login(@RequestBody LoginRequestDto loginRequestDto) {
+        System.out.println("Received login request for: " + loginRequestDto.getUsername());
         return authService.login(loginRequestDto);
     }
-
+    @CrossOrigin
     @PostMapping("/register")
-    @PreAuthorize("permitAll()")
+    //@PreAuthorize("permitAll()")
     public LoginResponseDto register(@RequestBody LoginRequestDto registerRequest) {
         return authService.register(registerRequest);
     }
